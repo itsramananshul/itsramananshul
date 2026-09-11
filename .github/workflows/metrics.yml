@@ -26,10 +26,10 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update base"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update base"
           filename: metrics.base.svg
           base: "header, activity, community, repositories, metadata"
       - name: isocalendar
@@ -41,15 +41,15 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update isocalendar"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update isocalendar"
           filename: metrics.isocalendar.svg
           base: ""
           plugin_isocalendar: "yes"
           plugin_isocalendar_duration: half-year
-      - name: habits
+      - name: calendar
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -58,18 +58,14 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update habits"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
-          filename: metrics.habits.svg
+          committer_message: "chore(metrics): update calendar"
+          filename: metrics.calendar.svg
           base: ""
-          plugin_habits: "yes"
-          plugin_habits_facts: "no"
-          plugin_habits_charts: "yes"
-          plugin_habits_charts_type: classic
-          plugin_habits_from: 200
-          plugin_habits_days: 14
+          plugin_calendar: "yes"
+          plugin_calendar_limit: 1
       - name: stars
         uses: lowlighter/metrics@latest
         with:
@@ -79,10 +75,10 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update stars"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update stars"
           filename: metrics.stars.svg
           base: ""
           plugin_stars: "yes"
@@ -96,10 +92,10 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update languages"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update languages"
           filename: metrics.languages.svg
           base: ""
           plugin_languages: "yes"
@@ -108,7 +104,7 @@ jobs:
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_analysis_timeout: 15
-      - name: achievements
+      - name: stargazers
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -117,16 +113,16 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update achievements"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
-          filename: metrics.achievements.svg
+          committer_message: "chore(metrics): update stargazers"
+          filename: metrics.stargazers.svg
           base: ""
-          plugin_achievements: "yes"
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: "C"
-          plugin_achievements_secrets: "yes"
+          plugin_stargazers: "yes"
+          plugin_stargazers_days: 0
+          plugin_stargazers_charts: "yes"
+          plugin_stargazers_charts_type: graph
       - name: followup
         uses: lowlighter/metrics@latest
         with:
@@ -136,10 +132,10 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update followup"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update followup"
           filename: metrics.followup.svg
           base: ""
           plugin_followup: "yes"
@@ -154,16 +150,17 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update lines"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
+          committer_message: "chore(metrics): update lines"
           filename: metrics.lines.svg
           base: ""
           plugin_lines: "yes"
-          plugin_lines_sections: base
+          plugin_lines_sections: "repositories, history"
           plugin_lines_repositories_limit: 4
-      - name: topics
+          plugin_lines_history_limit: 1
+      - name: repositories
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -172,17 +169,15 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update topics"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
-          filename: metrics.topics.svg
+          committer_message: "chore(metrics): update repositories"
+          filename: metrics.repositories.svg
           base: ""
-          plugin_topics: "yes"
-          plugin_topics_mode: starred
-          plugin_topics_sort: stars
-          plugin_topics_limit: 12
-      - name: notable
+          plugin_repositories: "yes"
+          plugin_repositories_pinned: 4
+      - name: traffic
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -191,13 +186,10 @@ jobs:
           config_timezone: America/New_York
           output_action: commit
           committer_branch: metrics
-          committer_message: "chore(metrics): update notable"
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
-          filename: metrics.notable.svg
+          committer_message: "chore(metrics): update traffic"
+          filename: metrics.traffic.svg
           base: ""
-          plugin_notable: "yes"
-          plugin_notable_from: organization
-          plugin_notable_repositories: "yes"
-          plugin_notable_indepth: "no"
+          plugin_traffic: "yes"
