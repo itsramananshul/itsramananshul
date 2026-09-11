@@ -32,6 +32,7 @@ jobs:
           committer_message: "chore(metrics): update base"
           filename: metrics.base.svg
           base: "header, activity, community, repositories, metadata"
+          plugin_traffic: "yes"
       - name: isocalendar
         uses: lowlighter/metrics@latest
         with:
@@ -177,7 +178,7 @@ jobs:
           base: ""
           plugin_repositories: "yes"
           plugin_repositories_pinned: 4
-      - name: traffic
+      - name: screenshot
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -189,7 +190,14 @@ jobs:
           plugins_errors_fatal: "no"
           retries: 3
           retries_delay: 60
-          committer_message: "chore(metrics): update traffic"
-          filename: metrics.traffic.svg
+          committer_message: "chore(metrics): update screenshot"
+          filename: metrics.screenshot.svg
           base: ""
-          plugin_traffic: "yes"
+          plugin_screenshot: "yes"
+          plugin_screenshot_title: anshulraman.com
+          plugin_screenshot_url: https://anshulraman.com
+          plugin_screenshot_selector: body
+          plugin_screenshot_mode: image
+          plugin_screenshot_viewport: '{"width": 1280, "height": 720}'
+          plugin_screenshot_wait: 3000
+          plugin_screenshot_background: "yes"
