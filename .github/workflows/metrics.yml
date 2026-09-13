@@ -17,22 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: base
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update base"
-          filename: metrics.base.svg
-          base: "header, activity, community, repositories, metadata"
-          plugin_traffic: "yes"
       - name: isocalendar
         uses: lowlighter/metrics@latest
         with:
@@ -50,40 +34,6 @@ jobs:
           base: ""
           plugin_isocalendar: "yes"
           plugin_isocalendar_duration: half-year
-      - name: calendar
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update calendar"
-          filename: metrics.calendar.svg
-          base: ""
-          plugin_calendar: "yes"
-          plugin_calendar_limit: 1
-      - name: stars
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update stars"
-          filename: metrics.stars.svg
-          base: ""
-          plugin_stars: "yes"
-          plugin_stars_limit: 4
       - name: languages
         uses: lowlighter/metrics@latest
         with:
@@ -105,43 +55,6 @@ jobs:
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_analysis_timeout: 15
-      - name: stargazers
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update stargazers"
-          filename: metrics.stargazers.svg
-          base: ""
-          plugin_stargazers: "yes"
-          plugin_stargazers_days: 0
-          plugin_stargazers_charts: "yes"
-          plugin_stargazers_charts_type: graph
-      - name: followup
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update followup"
-          filename: metrics.followup.svg
-          base: ""
-          plugin_followup: "yes"
-          plugin_followup_indepth: "yes"
-          plugin_followup_sections: repositories
       - name: repositories
         uses: lowlighter/metrics@latest
         with:
@@ -159,26 +72,3 @@ jobs:
           base: ""
           plugin_repositories: "yes"
           plugin_repositories_pinned: 4
-      - name: screenshot
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: itsramananshul
-          template: classic
-          config_timezone: America/New_York
-          output_action: commit
-          committer_branch: metrics
-          plugins_errors_fatal: "no"
-          retries: 3
-          retries_delay: 60
-          committer_message: "chore(metrics): update screenshot"
-          filename: metrics.screenshot.svg
-          base: ""
-          plugin_screenshot: "yes"
-          plugin_screenshot_title: anshulraman.com
-          plugin_screenshot_url: https://anshulraman.com
-          plugin_screenshot_selector: body
-          plugin_screenshot_mode: image
-          plugin_screenshot_viewport: '{"width": 1280, "height": 720}'
-          plugin_screenshot_wait: 3000
-          plugin_screenshot_background: "yes"
