@@ -24,6 +24,7 @@ jobs:
           user: itsramananshul
           template: classic
           config_timezone: America/New_York
+          commits_authoring: "itsramananshul, anshul raman"
           output_action: commit
           committer_branch: metrics
           plugins_errors_fatal: "no"
@@ -47,6 +48,7 @@ jobs:
           user: itsramananshul
           template: classic
           config_timezone: America/New_York
+          commits_authoring: "itsramananshul, anshul raman"
           output_action: commit
           committer_branch: metrics
           plugins_errors_fatal: "no"
