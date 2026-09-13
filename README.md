@@ -1,4 +1,6 @@
-<img src="banner.svg" width="100%" alt="hello. Anshul Raman — CS @ University of Cincinnati — AI · security · systems">
+<p align="center">
+  <img src="./assets/header.png" width="100%" alt="Hello. Anshul Raman. CS at University of Cincinnati. AI, security, systems.">
+</p>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=17&duration=3200&pause=900&color=8B949E&background=00000000&center=true&vCenter=true&width=760&height=30&lines=CS+%40+University+of+Cincinnati;building+ARIA+%E2%80%94+a+personal+reasoning+%26+memory+system;AI+%C2%B7+security+%C2%B7+systems" alt="">
@@ -7,15 +9,18 @@
 <p align="center">
   <a href="https://anshulraman.com">anshulraman.com</a> &nbsp;·&nbsp;
   <a href="https://www.linkedin.com/in/anshulraman06/">LinkedIn</a> &nbsp;·&nbsp;
-  <a href="https://joinhandshake.com">Handshake</a> <!-- TODO: replace with your Handshake profile URL -->
+  <a href="https://uc.joinhandshake.com/profiles/anshulraman06">Handshake</a>
 </p>
 
 <p align="center">
   <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=rust,ts,react,nextjs,py,docker,postgres,supabase,tailwind,git,linux,vercel,github,bash,cloudflare,figma&theme=dark&perline=16" width="640" alt="Rust, TypeScript, React, Next.js, Python, Docker, Postgres, Supabase, Tailwind, Git, Linux, Vercel, GitHub, Bash, Cloudflare, Figma"></a>
 </p>
 
+<h3 align="center">Activity</h3>
+
 <p align="center">
-  <img src="https://github-readme-stats-xi-seven-52.vercel.app/api?username=itsramananshul&show_icons=true&theme=github_dark&hide_border=true&include_all_commits=true&count_private=true" width="49%" align="top" alt="GitHub stats">
+  <!-- A+ is a custom display grade, not a calculated GitHub rank. Numbers refresh through update-stats.ps1. -->
+  <img src="./assets/stats.svg" width="49%" align="top" alt="GitHub activity statistics with a manually assigned A+ display grade">
   <img src="https://streak-stats.demolab.com?user=itsramananshul&theme=github-dark-blue&hide_border=true" width="49%" align="top" alt="Contribution streak">
 </p>
 
