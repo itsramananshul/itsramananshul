@@ -1,5 +1,4 @@
-<!-- banner: placeholder until Anshul specifies the one he wants -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=header&text=Anshul%20Raman&fontSize=40&fontColor=ffffff&fontAlignY=42&animation=fadeIn" width="100%" alt="">
+<img src="banner.svg" width="100%" alt="hello. Anshul Raman — CS @ University of Cincinnati — AI · security · systems">
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=17&duration=3200&pause=900&color=8B949E&background=00000000&center=true&vCenter=true&width=760&height=30&lines=CS+%40+University+of+Cincinnati;building+ARIA+%E2%80%94+a+personal+reasoning+%26+memory+system;AI+%C2%B7+security+%C2%B7+systems" alt="">
