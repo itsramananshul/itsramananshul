@@ -48,7 +48,6 @@
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/itsramananshul/itsramananshul/metrics/metrics.followup.svg" width="49%" alt="Issues and pull requests follow-up">
-  <img src="https://raw.githubusercontent.com/itsramananshul/itsramananshul/metrics/metrics.lines.svg" width="49%" alt="Lines of code changed">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/itsramananshul/itsramananshul/metrics/metrics.repositories.svg" width="49%" alt="Pinned repositories">
