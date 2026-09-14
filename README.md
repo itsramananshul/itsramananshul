@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/header.png" width="100%" alt="Hello. Anshul Raman. CS at University of Cincinnati. AI, security, systems.">
+  <img src="./banner.svg" width="100%" alt="Hello. Anshul Raman. CS at University of Cincinnati. AI, security, systems.">
 </p>
 
 <p align="center">
