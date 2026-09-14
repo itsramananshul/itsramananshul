@@ -42,6 +42,10 @@ jobs:
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_analysis_timeout: 15
+  repositories:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
       - name: repositories
         uses: lowlighter/metrics@latest
         with:
@@ -82,5 +86,6 @@ jobs:
           git add metrics.repository.*.svg
           if ! git diff --cached --quiet; then
             git commit -m "chore(metrics): update linked repository images"
+            git pull --rebase origin metrics
             git push origin HEAD:metrics
           fi
