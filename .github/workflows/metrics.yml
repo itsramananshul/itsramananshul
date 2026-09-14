@@ -43,6 +43,35 @@ jobs:
           plugin_languages_limit: 0
           plugin_languages_threshold: "0%"
           plugin_languages_sections: most-used
+      - uses: actions/checkout@v4
+        with:
+          ref: metrics
+      - name: Match language heading to repository totals
+        shell: pwsh
+        run: |
+          $path = Join-Path $PWD 'metrics.calendar-languages.svg'
+          $svg = [System.Xml.XmlDocument]::new()
+          $svg.PreserveWhitespace = $true
+          $svg.Load($path)
+          $count = $svg.SelectNodes('//*[local-name()="div" and @class="field language details"]').Count
+          $heading = @($svg.SelectNodes('//*[local-name()="h2"]') | Where-Object { $_.InnerText.Trim() -match '^\d+ Languages?$' })
+          if ($count -eq 0 -or $heading.Count -ne 1) { throw 'Unexpected language card structure' }
+          foreach ($text in $heading[0].ChildNodes) {
+            if ($text.NodeType -eq 'Text' -and $text.Value -match '\d+ Languages?') {
+              $text.Value = $text.Value -replace '\d+ Languages?', "$count Languages"
+            }
+          }
+          $svg.Save($path)
+      - name: Publish consistent language count
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics.calendar-languages.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(metrics): match language heading to displayed dataset"
+            git pull --rebase origin metrics
+            git push origin HEAD:metrics
+          fi
   repositories:
     runs-on: ubuntu-latest
     timeout-minutes: 30
