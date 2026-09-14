@@ -19,17 +19,21 @@ async function main() {
         throw new Error(`Unexpected featured repositories: ${names.join(', ')}`);
       }
       const width = Number(svg.getAttribute('width'));
-      const height = Number(svg.getAttribute('height'));
-      const origin = svg.getBoundingClientRect().top;
-      // Crop at measured row boundaries so each linked image retains the original artwork.
-      const boundaries = [0, ...rows.slice(1).map(row => row.parentElement.getBoundingClientRect().top - origin), height];
+      // Give each image its own row instead of cropping a font-dependent combined layout.
       return rows.map((row, index) => {
-        const start = boundaries[index];
-        const end = boundaries[index + 1];
-        if (end <= start || end > height) throw new Error('Invalid repository crop bounds');
         const copy = svg.cloneNode(true);
-        copy.setAttribute('viewBox', `0 ${start} ${width} ${end - start}`);
-        copy.setAttribute('height', String(end - start));
+        [...copy.querySelectorAll('section.repository')].forEach((other, otherIndex) => {
+          if (otherIndex !== index) other.parentElement.remove();
+        });
+        if (index > 0) copy.querySelector('h2')?.remove();
+        copy.removeAttribute('viewBox');
+        copy.setAttribute('height', '1000');
+        copy.querySelector('foreignObject').setAttribute('height', '1000');
+        document.body.replaceChildren(copy);
+        const bottom = copy.querySelector('section.repository').getBoundingClientRect().bottom;
+        const height = Math.ceil(bottom - copy.getBoundingClientRect().top) + 16;
+        copy.setAttribute('height', String(height));
+        copy.setAttribute('viewBox', `0 0 ${width} ${height}`);
         copy.querySelector('foreignObject').setAttribute('height', String(height));
         return { name: expected[index], svg: new XMLSerializer().serializeToString(copy) };
       });
