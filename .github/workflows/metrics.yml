@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - ".github/workflows/metrics.yml"
+      - "scripts/split-repositories.cjs"
 
 permissions: { contents: write }
 concurrency: { group: metrics, cancel-in-progress: true }
@@ -58,4 +59,28 @@ jobs:
           filename: metrics.repositories.svg
           base: ""
           plugin_repositories: "yes"
-          plugin_repositories_pinned: 4
+          plugin_repositories_featured: "itsramananshul/Revlu-hackathon, itsramananshul/gradintel, itsramananshul/Portfolio, itsramananshul/SolFlow"
+      - uses: actions/checkout@v4
+        with:
+          path: source
+      - uses: actions/checkout@v4
+        with:
+          ref: metrics
+          path: generated
+      - name: Split repositories into individually linked images
+        env:
+          NODE_PATH: ${{ runner.temp }}/card-renderer/node_modules
+        run: |
+          npm install --prefix "$RUNNER_TEMP/card-renderer" --no-package-lock playwright@1.62.1
+          node "$RUNNER_TEMP/card-renderer/node_modules/playwright/cli.js" install --with-deps chromium
+          node source/scripts/split-repositories.cjs generated/metrics.repositories.svg generated
+      - name: Publish individually linked repository images
+        working-directory: generated
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics.repository.*.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(metrics): update linked repository images"
+            git push origin HEAD:metrics
+          fi
